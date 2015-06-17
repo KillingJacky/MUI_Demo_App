@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style>
+
+
+		</style>
+	</head>
+	<body>
+		<!-- 侧滑导航根容器 -->
+		<div class="mui-off-canvas-wrap mui-slide-in">
+			<!--侧滑菜单部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-right">
+				<header class="mui-bar mui-bar-nav">
+					<h1 class="mui-title">Select a grove module to connect</h1>
+				</header>
+				<div class="mui-text-center" style="margin-top: 100px;">
+					<img src="images/waiting.gif" style="width: 30px;">
+					<p>Loading the grove meta data...</p>
+				</div>
+				<div id = "offCanvasSideScrollWrapper" class="mui-content mui-scroll-wrapper mui-hidden">
+					<div id="offCanvasSideScroll" class="mui-scroll">
+						<div class="mui-content-padded">
+							<ul id="grove_list" class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+								<li id = "grove_template" class="mui-table-view-cell mui-content-padded mui-hidden">
+									<a>
+										<img class="mui-media-object mui-pull-left" src="images/grove_default_image.png">
+										<span class="mui-media-object">Grove Name</span>
+									</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</aside>
+			<!-- 主页面容器 -->
+			<div class="mui-inner-wrap">
+				<!-- 主页面标题 -->
+				<header class="mui-bar mui-bar-nav">
+					<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+					<h1 class="mui-title">Configure Your Node</h1>
+				</header>
+				<div class="mui-content mui-scroll-wrapper">
+					<div id="offCanvasContentScroll" class="mui-scroll">
+						<div class="mui-text-center mui-content-padded">
+							<img src="images/node_pcb.JPG" style="width: 50%;">
+						</div>
+
+						<div class="mui-content-padded">
+							<ul id="list" class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<div class="mui-slider-handle">
+										<a href="#"  class="dummy">
+											<img class="mui-media-object mui-pull-left" src="images/grove_port.png">
+											<div class="mui-media-body">
+												<span interface="GPIO" pin = "14">GPIO14</span>
+												<p class='mui-ellipsis'>No grove module connected</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-slider-right mui-disabled">
+										<a class="mui-btn mui-btn-red">Disconnect</a>
+									</div>
+								</li>
+								<li class="mui-table-view-cell">
+									<div class="mui-slider-handle">
+										<a href="#" class="dummy">
+											<img class="mui-media-object mui-pull-left" src="images/grove_port.png">
+											<div class="mui-media-body">
+												<span interface="GPIO" pin = "15">GPIO15</span>
+												<p class='mui-ellipsis'>No grove module connected</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-slider-right mui-disabled">
+										<a class="mui-btn mui-btn-red">Disconnect</a>
+									</div>
+								</li>
+								<li class="mui-table-view-cell">
+									<div class="mui-slider-handle">
+										<a href="#" class="dummy">
+											<img class="mui-media-object mui-pull-left" src="images/grove_port.png">
+											<div class="mui-media-body">
+												<span interface="GPIO" pin = "16">GPIO16</span>
+												<p class='mui-ellipsis'>No grove module connected</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-slider-right mui-disabled">
+										<a class="mui-btn mui-btn-red">Disconnect</a>
+									</div>
+								</li>
+								<li class="mui-table-view-cell">
+									<div class="mui-slider-handle">
+										<a href="#" class="dummy">
+											<img class="mui-media-object mui-pull-left" src="images/grove_port.png">
+											<div class="mui-media-body">
+												<span interface="ANALOG"  pin = "A0">ADC0</span>
+												<p class='mui-ellipsis'>No grove module connected</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-slider-right mui-disabled">
+										<a class="mui-btn mui-btn-red">Disconnect</a>
+									</div>
+								</li>
+								<li class="mui-table-view-cell">
+									<div class="mui-slider-handle">
+										<a href="#" class="dummy">
+											<img class="mui-media-object mui-pull-left" src="images/grove_port.png">
+											<div class="mui-media-body">
+												<span interface="I2C" pinsda="4" pinscl="5">I2C</span>
+												<p class="mui-pull-right">4:SDA 5:SCL</p>
+												<p class='mui-ellipsis'>No grove module connected</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-slider-right mui-disabled">
+										<a class="mui-btn mui-btn-red">Disconnect</a>
+									</div>
+								</li>
+								<li class="mui-table-view-cell">
+									<div class="mui-slider-handle">
+										<a href="#" class="dummy">
+											<img class="mui-media-object mui-pull-left" src="images/grove_port.png">
+											<div class="mui-media-body">
+												<span interface="UART" pintx="3" pinrx="1">UART</span>
+												<p class="mui-pull-right">3:TX 1:RX</p>
+												<p class='mui-ellipsis'>No grove module connected</p>
+											</div>
+										</a>
+									</div>
+									<div class="mui-slider-right mui-disabled">
+										<a class="mui-btn mui-btn-red">Disconnect</a>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+						<div class="mui-content-padded">
+							<button id='download' class="mui-btn mui-btn-block mui-btn-primary mui-action-menu">Upgrade Firmware</button>
+						</div>
+					</div>
+				</div>
+				<!-- off-canvas backdrop -->
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+		<script src="js/util.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			var server_url = "";
+			var grove_database_loaded = false;
+			var grove_database_data = null;
+			var last_tap_port = null;
+			var downloading = false;
+
+			
+			mui.init();
+			
+			var reloadLastConfig = function (token)
+			{
+				var encoded_config = plus.storage.getItem("config_"+token);
+				var config = null;
+				if(encoded_config)
+				{
+					config = atob(encoded_config);
+				}
+				if(config)
+				{
+					document.getElementById("list").innerHTML = config;
+				}
+			};
+			
+			var preloadGroveDatabase = function ()
+			{
+				access_token = plus.storage.getItem("user_token");
+				console.log(access_token);
+				
+				
+				mui.ajax(server_url+'/v1/scan/drivers',{
+					data:{
+						access_token:access_token
+					},
+					dataType:'json',//服务器返回json格式数据
+					type:'get',//HTTP请求类型
+					timeout: 10000,
+					success:function(data){
+						if (data.length < 1)
+							return;
+						grove_database_data = data;
+						var i;
+						for (i = 0; i<data.length;i++) {
+							console.log(data[i].Files);
+						}
+						//console.log(JSON.stringify(data));
+						document.getElementById("offCanvasSideScrollWrapper").className = 
+							document.getElementById("offCanvasSideScrollWrapper").className.replace(/\bmui-hidden\b/,'');
+						//mui('.mui-off-canvas-wrap').offCanvas("close");
+						grove_database_loaded = true;
+						setTimeout(fillGroveSelectionList,100);
+					},
+					error:function(xhr,type,errorThrown){
+						//异常处理；
+						console.log("error type: "+type);
+						if(type == "abort" || type == "timeout")
+						{
+							mui.alert("Can not fetch meta data from server.\nPlease check your network connection!", function(){
+								mui.back();
+							});
+						}
+					}
+				});
+			};
+			
+			var fillGroveSelectionList = function()
+			{
+				if(last_tap_port == null) return;
+				var name = last_tap_port.getElementsByTagName("span")[0].innerText;
+				console.log("name=" + name);
+				/*query grove list against interface type */
+				var interface_t = last_tap_port.getElementsByTagName("span")[0].getAttribute("interface");
+				console.log("interface type:"+interface_t);
+				
+				var li_template = document.getElementById("grove_template");
+				var li = li_template.cloneNode(true);
+				document.getElementById("grove_list").innerHTML = "";
+				document.getElementById("grove_list").appendChild(li);
+				if(grove_database_loaded)
+				{
+					for (var i = 0; i < grove_database_data.length; i++) {
+						if(grove_database_data[i].InterfaceType != interface_t) continue;
+						li = li_template.cloneNode(true);
+						li.id = grove_database_data[i].GroveName;
+						li.className = "mui-table-view-cell";
+						if (grove_database_data[i].ImageURL)
+						{
+							li.querySelector("img").src = grove_database_data[i].ImageURL;
+						}
+						li.querySelector("span").innerHTML = grove_database_data[i].GroveName;
+						document.getElementById("grove_list").appendChild(li);
+					}
+					if(document.getElementById("grove_list").childElementCount < 1)
+						return;
+						
+					mui("#grove_list").on("tap", "a", function(){
+						var grove_name = this.getElementsByTagName("span")[0].innerText;
+						var grove_name_orig = grove_name;
+						grove_name = grove_name.replace("/\s/","_");
+						
+						for (var i = 0; i < document.getElementById("list").childElementCount; i++) {
+							var line = document.getElementById("list").children[i];
+							if(line.querySelector(".mui-ellipsis").innerText == grove_name && line.querySelector("a.dummy") != last_tap_port)
+								grove_name = grove_name+"1";
+						}
+						mui.prompt('Please name the grove instance', grove_name,'GroveOnWeb',
+						['OK','Use default'],
+						function(e){
+					  		if(e.index==0){
+					  			if(e.value != "") grove_name = e.value.replace(/\s/g,"_");
+					  		}
+						  	last_tap_port.querySelector(".mui-ellipsis").innerText = grove_name;
+						  	last_tap_port.setAttribute("connected","true");
+						  	last_tap_port.setAttribute("GroveName",grove_name_orig);
+						  	mui('.mui-off-canvas-wrap').offCanvas("close");
+						  	mui("#grove_list").off("tap","a");
+						}); //prompt
+					  	
+					});
+					
+				}
+			};
+			
+			var checkDownloadStatus = function(node_token)
+			{
+				mui.ajax(server_url+'/v1/ota/status',{
+					data:{
+						access_token:node_token
+					},
+					dataType:'json',//
+					type:'post',//
+					timeout: 60000,
+					success:function(data){
+						if (data.status != undefined && data.status == 200)
+						{
+							console.log(data.ota_msg);
+							if(data.ota_status == "going")
+							{
+								document.getElementById("download").innerHTML = data.ota_msg;
+								setTimeout(function(){checkDownloadStatus(node_token);}, 0);
+							}else{
+								downloading = false;
+								console.log(data.ota_msg);
+								mui.alert("Firmware upgrading "+data.ota_status+": "+data.ota_msg, function(){
+									//mui.back();
+									document.getElementById("download").innerHTML = "Upgrade Firmware";
+								});
+							}
+						}else{
+							downloading = false;
+							console.log(data.msg);
+							mui.alert("Firmware upgrading failed: "+data.msg, function(){
+								//mui.back();
+								document.getElementById("download").innerHTML = "Upgrade Firmware";
+							});
+						}
+						
+					},
+					error:function(xhr,type,errorThrown){
+						console.log("error type: "+type+", errorThrown: "+errorThrown);
+						downloading = false;
+						mui.alert("Firmware upgrading failed: "+errorThrown, function(){
+							//mui.back();
+							document.getElementById("download").innerHTML = "Upgrade Firmware";
+						});
+					}
+				});
+			};
+			
+			var postDownload = function(node_token, yaml_str)
+			{
+				console.log("post download for node:"+node_token);
+				
+				mui.ajax(server_url+'/v1/ota/trig',{
+					data:{
+						access_token:node_token,
+						yaml: btoa(yaml_str)
+					},
+					dataType:'json',//
+					type:'post',//
+					timeout: 20000,
+					success:function(data){
+						console.log(data.status);
+						if (data.status != undefined && data.status == 200)
+						{
+							console.log(data.ota_msg);
+							document.getElementById("download").innerHTML = data.ota_msg;
+							setTimeout(function(){checkDownloadStatus(node_token);}, 0);
+						}else{
+							downloading = false;
+							console.log(data.msg);
+							mui.alert("Error from server: "+data.msg, function(){
+								//mui.back();
+								document.getElementById("download").innerHTML = "Upgrade Firmware";
+							});
+						}
+						
+					},
+					error:function(xhr,type,errorThrown){
+						console.log("error type: "+type+", errorThrown: "+errorThrown);
+						downloading = false;
+						mui.alert("Firmware upgrading failed: "+errorThrown, function(){
+							//mui.back();
+							document.getElementById("download").innerHTML = "Upgrade Firmware";
+						});
+						
+					}
+				});
+			};
+			
+			
+			mui.plusReady(function() {
+				server_url = plus.storage.getItem("server_url");
+				var name = mui.currentWebview.name;
+				var node_token = mui.currentWebview.token;
+				console.log(name);
+				
+				reloadLastConfig(node_token);
+				setTimeout(function(){
+					plus.nativeUI.closeWaiting();
+					mui.currentWebview.show();
+				},10);
+    				
+    				
+    				setTimeout(preloadGroveDatabase, 2000);
+    				
+				document.getElementById("download").addEventListener('tap', function(){
+					
+					if(downloading) return;
+					
+					var content = document.getElementById("list").innerHTML;
+					//console.log(content);
+				 	plus.storage.setItem("config_"+node_token, btoa(content));
+				 	var yaml = "";
+				 	
+				 	for (var i = 0; i < document.getElementById("list").childElementCount; i++) {
+						var line = document.getElementById("list").children[i];
+						var yaml_item = "";
+						//console.log(line.querySelector("a.dummy").hasAttribute("connected"));
+						//console.log(line.querySelector("a.dummy").getAttribute("connected"));
+						if(line.querySelector("a.dummy").hasAttribute("connected") && line.querySelector("a.dummy").getAttribute("connected") == "true")
+						{
+							var grove_ins_name = line.querySelector(".mui-ellipsis").innerText;
+							var grove_name = line.querySelector("a.dummy").getAttribute("GroveName");
+							var interface_t = line.getElementsByTagName("span")[0].getAttribute("interface");
+							yaml_item += grove_ins_name+":\r\n";
+							yaml_item += "  name: "+grove_name+"\r\n";
+							yaml_item += "  construct_arg_list:\r\n";
+							if(interface_t == "GPIO" || interface_t == "ANALOG")
+							{
+								var arg_name = findConstructSingleArgName(grove_database_data, grove_name);
+								var pin = line.getElementsByTagName("span")[0].getAttribute("pin");
+								if(arg_name == "") continue;
+								yaml_item += "    "+arg_name+": "+pin+"\r\n";
+							}else if(interface_t == "I2C")
+							{
+								var arg_name_sda = findConstructArgNameRegExp(grove_database_data, grove_name,"sda");
+								var arg_name_scl = findConstructArgNameRegExp(grove_database_data, grove_name,"scl");
+								var pin_sda = line.getElementsByTagName("span")[0].getAttribute("pinsda");
+								var pin_scl = line.getElementsByTagName("span")[0].getAttribute("pinscl");
+								if(arg_name_sda == "" || arg_name_scl == "") continue;
+								yaml_item += "    "+arg_name_sda+": "+pin_sda+ "\r\n";
+								yaml_item += "    "+arg_name_scl+": "+pin_scl+"\r\n";
+							}else if(interface_t == "UART")
+							{
+								var arg_name_tx = findConstructArgNameRegExp(grove_database_data, grove_name,"tx");
+								var arg_name_rx = findConstructArgNameRegExp(grove_database_data, grove_name,"rx");
+								var pin_tx = line.getElementsByTagName("span")[0].getAttribute("pintx");
+								var pin_rx = line.getElementsByTagName("span")[0].getAttribute("pinrx");
+								if(arg_name_tx == "" || arg_name_rx == "") continue;
+								yaml_item += "    "+arg_name_tx+": "+pin_tx+"\r\n";
+								yaml_item += "    "+arg_name_rx+": "+pin_rx+"\r\n";
+							}
+						}
+						yaml += yaml_item;
+					}
+				 	console.log(yaml);
+				 	if(yaml != "")
+				 	{
+				 		document.getElementById("download").innerHTML = "Preparing...";
+				 		postDownload(node_token, yaml);
+				 		downloading = true;
+				 	}
+				 });
+				
+				/* open the side menu */
+				mui('#list').on('tap', 'a.dummy', function() {
+					last_tap_port = this;
+					fillGroveSelectionList();
+					mui('.mui-off-canvas-wrap').offCanvas("show");
+				});
+				
+				mui('#list').on('tap', 'a.mui-btn', function(event) {
+					var elem = this;
+					mui.confirm('Confirm disconnecting？', 'GroveOnWeb', ["Confirm","Cancel"], function(e) {
+						var li = elem.parentNode.parentNode;
+						if (e.index == 0) {
+							li.querySelector("a.dummy").removeAttribute("connected");
+							li.querySelector("p.mui-ellipsis").innerHTML = "No grove module connected";
+						}
+						mui.swipeoutClose(li);
+					});
+				});
+				
+				mui('#offCanvasSideScroll').scroll();
+				mui('#offCanvasContentScroll').scroll();
+				
+				mui.menu = function() {}; //disable phone's menu key to open slide menu
+				
+				
+				
+			});
+			
+			
+			
+
+			 
+			 			 
+			 
+		</script>
+	</body>
+
+</html>
